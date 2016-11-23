@@ -40,6 +40,7 @@ install:
     - '%CYG_BASH% -lc "cp WpdPack/Lib/wpcap.lib /usr/lib/"'
     - '%CYG_BASH% -lc "mkdir -p /usr/include/pcap"'
     - '%CYG_BASH% -lc "cp -r WpdPack/Include/* /usr/include/"'
+    - choco install winpcap
 
 build_script:
     - 'echo building...'
