@@ -14,8 +14,8 @@ environment:
           CYG_CACHE: C:\cygwin\var\cache\setup
           CYG_BASH: C:\cygwin\bin\bash
           CC: gcc
-          TARGET: 32bit
-          TARGET_VARS: 32bit-vars
+          TARGET: distcheck
+          UNITTESTS: src/suricata -l /tmp -u
 
 # Cache Cygwin files to speed up build
 cache:
@@ -34,4 +34,4 @@ install:
 
 build_script:
     - 'echo building...'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS && make LDFLAGS=$LDFLAGS CC=$CC $TARGET_VARS hiredis-example"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./configure --enable-unittests && make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS && $UNITTESTS"'
