@@ -25,6 +25,7 @@ clone_depth: 1
 # Attempt to ensure we don't try to convert line endings to Win32 CRLF as this will cause build to fail
 init:
     - git config --global core.autocrlf input
+    - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 # Install needed build dependencies
 install:
@@ -55,6 +56,7 @@ build_script:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe --build-info"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe -u -l /tmp/"'
 
-#on_finish:
+on_finish:
+    - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 #    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; cat config.log"'
 
