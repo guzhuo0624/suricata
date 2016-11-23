@@ -52,7 +52,7 @@ build_script:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/suricata.exe"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; file src/suricata.exe"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec src/suricata.exe --build-info"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; cd src && ./suricata.exe --build-info"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; src/suricata.exe -u -l /tmp/"'
 
 #on_finish:
