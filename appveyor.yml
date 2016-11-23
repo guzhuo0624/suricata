@@ -34,18 +34,17 @@ install:
     - '%CYG_BASH% -lc "cygcheck -dc cygwin"'
     - '%CYG_BASH% -lc "wget https://www.winpcap.org/install/bin/WpdPack_4_1_2.zip && ls && unzip WpdPack_4_1_2.zip"'
     - '%CYG_BASH% -lc "cp WpdPack/Lib/libpacket.a /usr/lib/"'
-    - '%CYG_BASH% -lc "cp WpdPack/Lib/libwpcap.a /usr/lib/"'
+    - '%CYG_BASH% -lc "cp WpdPack/Lib/libwpcap.a /usr/lib/libpcap.a"' # so -lpcap works
     - '%CYG_BASH% -lc "mkdir -p /usr/include/pcap"'
     - '%CYG_BASH% -lc "cp -r WpdPack/Include/* /usr/include/"'
-    - '%CYG_BASH% -lc "echo post-setup1"'
-    - '%CYG_BASH% -lc "ls -l /usr/lib/ && ls -l /usr/include|grep pcap && ls -l /usr/include/pcap"'
-    - '%CYG_BASH% -lc "echo post-setup2"'
 
 build_script:
     - 'echo building...'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./autogen.sh"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./configure --enable-unittests --with-libpcap-includes=/usr/include/"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS && $UNITTESTS"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./configure --enable-unittests"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC CFLAGS=$CFLAGS"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; $UNITTESTS"'
 
 on_finish:
 #  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
