@@ -36,7 +36,7 @@ install:
     - '%CYG_BASH% -lc "cp WpdPack/Lib/libpacket.a /usr/lib/"'
     - '%CYG_BASH% -lc "cp WpdPack/Lib/libwpcap.a /usr/lib/"'
     - '%CYG_BASH% -lc "mkdir -p /usr/include/pcap"'
-    - '%CYG_BASH% -lc "cp -r WpdPack/Include/* /usr/include/pcap/"'
+    - '%CYG_BASH% -lc "cp -r WpdPack/Include/* /usr/include/"'
     - '%CYG_BASH% -lc "echo post-setup1"'
     - '%CYG_BASH% -lc "ls -l /usr/lib/ && ls -l /usr/include|grep pcap && ls -l /usr/include/pcap"'
     - '%CYG_BASH% -lc "echo post-setup2"'
