@@ -52,8 +52,8 @@ build_script:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/suricata.exe"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; file src/suricata.exe"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; suricata.exe --build-info"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; suricata.exe -u -l /tmp/"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe --build-info"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe -u -l /tmp/"'
 
 #on_finish:
 #    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; cat config.log"'
