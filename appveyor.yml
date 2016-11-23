@@ -48,9 +48,8 @@ build_script:
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./configure --enable-unittests --disable-gccmarch-native"'
 #    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make -j3 LDFLAGS=$LDFLAGS CC=$CC CFLAGS=$CFLAGS"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./src/suricata --build-info"'
-#    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./src/suricata --build-info"'
-#    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./src/suricata -u -l /tmp/"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./src/suricata.exe --build-info"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./src/suricata.exe -u -l /tmp/"'
 
 #on_finish:
 #    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; cat config.log"'
