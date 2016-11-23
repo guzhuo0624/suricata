@@ -49,10 +49,9 @@ build_script:
 #    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make -j3 LDFLAGS=$LDFLAGS CC=$CC CFLAGS=$CFLAGS"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; make install"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/"'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ls -l src/suricata.exe"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; file src/suricata.exe"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ldd src/suricata.exe"'
+    - suricata.exe --build-info
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe --build-info"'
     - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; /usr/local/bin/suricata.exe -u -l /tmp/"'
 
