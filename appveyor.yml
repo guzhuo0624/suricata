@@ -34,4 +34,6 @@ install:
 
 build_script:
     - 'echo building...'
-    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; ./configure --enable-unittests && make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS && $UNITTESTS"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./autogen.sh"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; ./configure --enable-unittests"'
+    - '%CYG_BASH% -lc "cd $APPVEYOR_BUILD_FOLDER; exec 0</dev/null; make LDFLAGS=$LDFLAGS CC=$CC $TARGET CFLAGS=$CFLAGS && $UNITTESTS"'
