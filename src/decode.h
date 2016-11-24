@@ -37,6 +37,10 @@
 #include "util-cuda-vars.h"
 #endif /* __SC_CUDA_SUPPORT__ */
 
+#ifdef HAVE_DPDKINTEL
+//#include "dpdk-include-common.h"
+#endif /* HAVE_DPDKINTEL */
+
 typedef enum {
     CHECKSUM_VALIDATION_DISABLE,
     CHECKSUM_VALIDATION_ENABLE,
@@ -445,6 +449,13 @@ typedef struct Packet_
 #ifdef AF_PACKET
         AFPPacketVars afp_v;
 #endif
+#ifdef HAVE_DPDKINTEL
+    //struct rte_mbuf * dpdkIntel_mbufPtr;
+    void * dpdkIntel_mbufPtr;
+    uint8_t dpdkIntel_ringId;
+    uint8_t dpdkIntel_inPort;
+    uint8_t dpdkIntel_outPort;
+#endif /* HAVE_DPDKINTEL */
 #ifdef HAVE_MPIPE
         /* tilegx mpipe stuff */
         MpipePacketVars mpipe_v;

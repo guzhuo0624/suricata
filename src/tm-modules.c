@@ -233,7 +233,10 @@ const char * TmModuleTmmIdToString(TmmId id)
         CASE_CODE (TMM_DETECTLOADER);
         CASE_CODE (TMM_RECEIVENETMAP);
         CASE_CODE (TMM_DECODENETMAP);
-
+#ifdef
+        CASE_CODE (TMM_RECEIVEDPDK);
+        CASE_CODE (TMM_DECODEDPDK);
+#endif
         CASE_CODE (TMM_SIZE);
     }
     return "<unknown>";
